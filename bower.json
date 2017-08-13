@@ -1,0 +1,14 @@
+{
+  "name": "boltctf",
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "jquery-ui": "^1.12.1",
+    "font-awesome": "^4.7.0",
+    "AdminLTE": "adminlte#^2.3.11",
+    "parsleyjs": "^2.6.5",
+    "jquery-form": "4.2.1",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.47",
+    "moment": "^2.18.1",
+    "bootstrap-sass": "^3.3.7"
+  }
+}

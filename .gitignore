@@ -1,0 +1,59 @@
+# ********* Laravel gitignore *********
+
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+/.idea
+/.vagrant
+Homestead.json
+Homestead.yaml
+npm-debug.log
+/bootstrap/compiled.php
+.env.*
+.env.local
+.env
+composer.phar
+.DS_Store
+Thumbs.db
+.vagrant*
+resources/assets/vendor
+public/adminlte/plugins
+docgen.sh
+phpdoc.dist.xml
+/public/docs
+/public/user
+/public/js
+/public/css
+/storage/app/public
+
+# ********* MAC OS gitignore *********
+
+# General
+*.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
