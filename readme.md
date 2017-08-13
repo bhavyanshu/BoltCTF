@@ -9,12 +9,13 @@ Laravel , VueJs , Bootstrap , AdminLTE
 ## Setup
 
 * Clone this repository to your local/testing server.
-* I**Important** : Open `database/seeds/SudoUserTableSeeder.php` and change the username, email and password of the first super user.
+* **Important** : Open `database/seeds/SudoUserTableSeeder.php` and change the username, email and password of the first super user.
 * Make sure you have latest **php**, **composer** and **npm** setup.
-  * For Ubuntu (like) hosts
+
+  * **For Ubuntu (like) hosts**
     - Run `bash setup.sh` and answer questions asked by the script carefully. Once done, your app will be ready to deploy.
 
-  * For other hosts
+  * **For other hosts**
     - First you need to create a **.env** file. Copy-Paste and edit the following parameters in your file.
 
     ```
