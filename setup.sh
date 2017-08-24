@@ -24,46 +24,25 @@ composer install --optimize-autoloader
 npm install
 
 printMessage "\nProcessing .env file..."
-if [ -e .env ]; then
-  read -p "Would you like to keep your old .env file? (y/n) [y]" -n 1 -r
-  if [[ $REPLY =~ ^[Nn]$ ]]
-  then
-      rm .env
-      printMessage "Provide configuration for the database..."
-      read -p "Enter Your Database Name: "  dbname
-      read -p "Enter Your Database User Name: "  dbuser
-      read -p "Enter Your Database Password: "  dbpassword
-      read -p "Enter Your Database Host name: "  dbhostname
+read -p "Would you like to keep your old .env file? (y/n) [y]" -n 1 -r
+if [[ $REPLY =~ ^[Nn]$ ]]
+then
+    rm .env
+    printMessage "\nProvide configuration for the database..."
+    read -p "Enter Your Database Name: "  dbname
+    read -p "Enter Your Database User Name: "  dbuser
+    read -p "Enter Your Database Password: "  dbpassword
+    read -p "Enter Your Database Host name: "  dbhostname
 
-      echo "APP_ENV=production
-      APP_DEBUG=false
-      APP_KEY=
-      " >> .env
+    echo -e "APP_ENV=production\nAPP_DEBUG=false\nAPP_KEY=\n" >> .env
 
-      echo "DB_HOST=$dbhostname
-      DB_DATABASE=$dbname
-      DB_USERNAME=$dbuser
-      DB_PASSWORD=$dbpassword
-      " >> .env
+    echo -e "DB_HOST=$dbhostname\nDB_DATABASE=$dbname\nDB_USERNAME=$dbuser\nDB_PASSWORD=$dbpassword\n" >> .env
 
-      echo "CACHE_DRIVER=file
-      SESSION_DRIVER=file
-      QUEUE_DRIVER=sync
-      " >> .env
+    echo -e "CACHE_DRIVER=file\nSESSION_DRIVER=file\nQUEUE_DRIVER=sync\n" >> .env
 
-      echo "REDIS_HOST=localhost
-      REDIS_PASSWORD=null
-      REDIS_PORT=6379
-      " >> .env
+    echo -e "REDIS_HOST=localhost\nREDIS_PASSWORD=null\nREDIS_PORT=6379\n" >> .env
 
-      echo "MAIL_DRIVER=smtp
-      MAIL_HOST=mailtrap.io
-      MAIL_PORT=2525
-      MAIL_USERNAME=null
-      MAIL_PASSWORD=null
-      MAIL_ENCRYPTION=null
-      " >> .env
-  fi
+    echo -e "MAIL_DRIVER=smtp\nMAIL_HOST=mailtrap.io\nMAIL_PORT=2525\nMAIL_USERNAME=null\nMAIL_PASSWORD=null\nMAIL_ENCRYPTION=null\n" >> .env
 fi
 
 printMessage "\nGenerating encryption keys.."
@@ -73,6 +52,7 @@ php artisan key:generate
 printMessage "\nYou can edit your .env file if anything changes in future."
 
 printMessage "\nBuilding asset libraries"
+npm rebuild node-sass --force
 npm run prod
 
 printMessage "\nRunning optimizer and migrator."
@@ -81,6 +61,6 @@ php artisan optimize
 php artisan cache:clear
 
 printMessage "\nType yes if running for the first time else press enter key to skip"
-php artisan migrate --seed
+php artisan migrate:refresh --seed
 
-printMessage "\nAll Done. Run 'php artisan serve' to launch the app."
+printMessage "\nAll Done. Run 'php artisan serve' to launch the app or check the README file for NGINX server setup."

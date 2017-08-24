@@ -27,6 +27,7 @@ phpdoc.dist.xml
 /public/js
 /public/css
 /storage/app/public
+/storage/logs
 
 # ********* MAC OS gitignore *********
 

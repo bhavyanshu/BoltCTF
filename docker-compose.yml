@@ -1,0 +1,39 @@
+version: '2'
+services:
+  web:
+    build:
+      context: ./
+      dockerfile: web.dockerfile
+    volumes:
+      - ./:/var/www
+    ports:
+      - "8080:80"
+    links:
+      - app
+
+  app:
+    build:
+      context: ./
+      dockerfile: app.dockerfile
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    environment:
+      - "DB_PORT=3306"
+      - "DB_HOST=database"
+
+  database:
+    image: mysql:5.6
+    environment:
+      - "MYSQL_DATABASE=boltctf"
+      - "MYSQL_USER=test_code"
+      - "MYSQL_PASSWORD=test_code"
+      - "MYSQL_ROOT_PASSWORD=secret"
+    ports:
+      - "33061:3306"
+
+### Volumes Setup #############################################
+
+volumes:
+  mysql:
+    driver: "local"

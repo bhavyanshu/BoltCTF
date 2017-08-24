@@ -65,3 +65,13 @@ Laravel , VueJs , Bootstrap , AdminLTE
     php artisan migrate --seed
     php artisan serve
     ```
+
+## Hosting on nginx
+
+Let's change the group ownership of the storage and bootstrap/cache directories to www-data.
+
+    sudo chgrp -R www-data storage bootstrap/cache
+
+Then recursively grant all permissions, including write and execute, to the group.
+
+    sudo chmod -R ug+rwx storage bootstrap/cache
