@@ -60,7 +60,7 @@ printMessage "\nRunning optimizer and migrator."
 php artisan optimize
 php artisan cache:clear
 
-printMessage "\nType yes if running for the first time else press enter key to skip"
+printMessage "\nDATABASE MIGRATION : Type yes if running for the first time else press enter key to skip"
 php artisan migrate:refresh --seed
 
 printMessage "\nAll Done. Run 'php artisan serve' to launch the app or check the README file for NGINX server setup."

@@ -65,6 +65,21 @@ Laravel , VueJs , Bootstrap , AdminLTE
     php artisan migrate --seed
     php artisan serve
     ```
+  * **Docker**
+
+    - Once you are done, the app will be accessible on port 80.
+
+    ```
+    # Build
+    sudo docker-compose up --build
+
+    # Set permissions
+    sudo docker-compose exec app chgrp -R www-data storage bootstrap/cache
+    sudo docker-compose exec app chmod -R ug+rwx storage bootstrap/cache
+
+    # Run setup script
+    sudo docker-compose bash setup.sh
+    ```
 
 ## Hosting on nginx
 
