@@ -21,6 +21,7 @@ Laravel , VueJs , Bootstrap , AdminLTE
     ```
     APP_ENV=production
     APP_DEBUG=false
+    APP_TZ=America/Chicago
 
     # Step: 1 - Generate using php artisan key:generate --env=production
     APP_KEY=
@@ -47,6 +48,8 @@ Laravel , VueJs , Bootstrap , AdminLTE
     MAIL_USERNAME=null
     MAIL_PASSWORD=null
     MAIL_ENCRYPTION=null
+    MAIL_FROM_ADDRESS=no-reply@example.com
+    MAIL_FROM_NAME=no-reply
 
     # Step 5 - Generate encryption keys for Passport service
     # php artisan passport:keys
