@@ -1,6 +1,7 @@
 <?php
 return [
   'name' => 'BoltCTF',
+  'version' => 'v1.1',
   'htmltitle' => 'Bolt <span class="fa fa-bolt"> </span> CTF',
   'link' => 'https://github.com/bhavyanshu/boltctf',
   'summary' => 'A jeopardy-style CTF hosting web app',

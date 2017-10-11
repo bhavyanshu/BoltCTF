@@ -14,16 +14,16 @@ printMessage() {
 
 printMessage "########### Welcome to BoltCTF Setup #############"
 
-printMessage "\nChecking for required programs and utilities..."
+printMessage "\nCHECKING: required programs and utilities..."
 checkProgram php
 checkProgram composer
 checkProgram npm
 
-printMessage "\nFetching and installing all dependencies..."
+printMessage "\nINSTALLING: dependencies..."
 composer install --optimize-autoloader
 npm install
 
-printMessage "\nProcessing .env file..."
+printMessage "\nCHECKING: .env file..."
 if [ -e .env ]; then
   read -p "Would you like to keep your old .env file? (y/n) [y]" -n 1 -r
   if [[ $REPLY =~ ^[Nn]$ ]]
@@ -35,44 +35,46 @@ if [ -e .env ]; then
       read -p "Enter Your Database Password: "  dbpassword
       read -p "Enter Your Database Host name: "  dbhostname
 
-      echo "APP_ENV=production
-      APP_DEBUG=false
-      APP_KEY=
-      " >> .env
+######### Excuse the weird indentation (silly cat!) #########
+cat > .env << EOF
+APP_ENV=production
+APP_TZ=America/Chicago
+APP_DEBUG=false
+APP_KEY=
 
-      echo "DB_HOST=$dbhostname
-      DB_DATABASE=$dbname
-      DB_USERNAME=$dbuser
-      DB_PASSWORD=$dbpassword
-      " >> .env
+DB_HOST=$dbhostname
+DB_DATABASE=$dbname
+DB_USERNAME=$dbuser
+DB_PASSWORD=$dbpassword
 
-      echo "CACHE_DRIVER=file
-      SESSION_DRIVER=file
-      QUEUE_DRIVER=sync
-      " >> .env
+CACHE_DRIVER=file
+SESSION_DRIVER=file
+QUEUE_DRIVER=sync
 
-      echo "REDIS_HOST=localhost
-      REDIS_PASSWORD=null
-      REDIS_PORT=6379
-      " >> .env
+REDIS_HOST=localhost
+REDIS_PASSWORD=null
+REDIS_PORT=6379
 
-      echo "MAIL_DRIVER=smtp
-      MAIL_HOST=mailtrap.io
-      MAIL_PORT=2525
-      MAIL_USERNAME=null
-      MAIL_PASSWORD=null
-      MAIL_ENCRYPTION=null
-      " >> .env
+MAIL_DRIVER=smtp
+MAIL_HOST=mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS=no-reply@example.com
+MAIL_FROM_NAME=no-reply
+
+EOF
+######### Excuse the weird indentation (silly cat!) #########
+
   fi
 fi
 
-printMessage "\nGenerating encryption keys.."
-printMessage "Type yes if running for the first time, else press enter key to skip"
+printMessage "\nENCRYPTION KEYS: Type yes if running for the first time, else press enter key to skip"
 php artisan passport:keys
 php artisan key:generate
-printMessage "\nYou can edit your .env file if anything changes in future."
 
-printMessage "\nBuilding asset libraries"
+printMessage "\nBUILDING: asset libraries"
 npm run prod
 
 printMessage "\nRunning optimizer and migrator."
