@@ -3,7 +3,7 @@ return [
   'name' => 'BoltCTF',
   'version' => 'v1.1',
   'htmltitle' => 'Bolt <span class="fa fa-bolt"> </span> CTF',
-  'link' => 'https://github.com/bhavyanshu/boltctf',
+  'link' => 'https://github.com/bhavyanshu/BoltCTF',
   'summary' => 'A jeopardy-style CTF hosting web app',
   'description' => 'You can easily host jeopardy-style CTF competitions at your organization using this open source web app.',
   'author' => 'Bhavyanshu Parasher',

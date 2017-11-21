@@ -31,7 +31,7 @@
 						<div class="col-md-12">
 							<h3>Contribute</h3>
 							<p>This is an open source project developed by {{config('appmeta.author')}} - <a href="{{config('appmeta.author_link')}}">Website</a> | <a href="https://twitter.com/pytacular">Twitter</a>. <br>Would you like to contribute to this project?</p>
-							<p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+							<p><a class="btn btn-primary" href="{{config('appmeta.link')}}">View details &raquo;</a></p>
 						</div>
 					</div>
 					</div>
