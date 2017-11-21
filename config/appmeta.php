@@ -8,8 +8,8 @@ return [
   'description' => 'You can easily host jeopardy-style CTF competitions at your organization using this open source web app.',
   'author' => 'Bhavyanshu Parasher',
   'author_link' => 'https://bhavyanshu.me',
-  'license' => 'Apache License, Version 2.0',
-  'license_link' => 'http://www.apache.org/licenses/LICENSE-2.0',
+  'license' => 'MIT',
+  'license_link' => 'https://raw.githubusercontent.com/bhavyanshu/BoltCTF/master/LICENSE',
   'copyright_year' => 'Copyright &copy; 2017',
   'special_mentions' => [
     [
