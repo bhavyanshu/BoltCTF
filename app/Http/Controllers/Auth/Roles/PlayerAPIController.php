@@ -97,11 +97,20 @@ class PlayerAPIController extends Controller
       $event = Event::where('ref_guid', $request->ev_ref_guid)->firstOrFail();
 
       if(Utility::hasEventExpired($event) == true) {
-        return Response::isEmpty();
+          return Response::isEmpty();
       }
 
       $question = Question::with('answerflag')->where('ref_guid', $request->que_ref_guid)->firstOrFail();
       $correct_answers = $question->answerflag;
+
+      //check if user already submitted the flag
+      $checkSubmittedFlag = SubmittedFlag::where('sbmt_user_id', Auth::user()->id)
+          ->where('sbmt_que_id', $question->question_id)
+          ->first();
+
+      if($checkSubmittedFlag) {
+          return Response::error("Already submitted");
+      }
 
       foreach ($correct_answers as $ca) {
         if(strcasecmp($ca->answer_text, $request->answer) == 0) {
